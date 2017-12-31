@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
 
 
 
@@ -7,7 +8,7 @@ export default class UploadVideoScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Upload Routine',
-    headerRight: <Text> Go Right </Text>
+    headerRight: <Button title='Pick Judges' onPress={() => navigate}></Button>
   }
 
   render() {
