@@ -15,7 +15,7 @@ class AuthScreen extends React.Component {
 
   componentWillReceiveProps(nextProps){
     this.onAuthComplete(nextProps);
-    console.log('NextProps =' + NextProps)
+    console.log(nextProps)
   }
 
   onAuthComplete(props) {
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, actions)(AuthScreen);
+export default connect(mapStateToProps, actions)(AuthScreen);
