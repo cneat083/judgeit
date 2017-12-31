@@ -8,18 +8,19 @@ import { Button } from 'react-native-elements';
 
 class AuthScreen extends React.Component {
   componentDidMount() {
+
     this.props.facebookLogin();
     this.onAuthComplete(this.props);
     console.log(this.props)
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.onAuthComplete(nextProps);
-    console.log(nextProps)
+    console.log(nextProps);
   }
 
   onAuthComplete(props) {
-    if(props.token){
+    if (props.token) {
       this.props.navigation.navigate('UserHome')
     }
   }
