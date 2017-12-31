@@ -8,7 +8,7 @@ export default class UploadVideoScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Upload Routine',
-    headerRight: <Button title='Pick Judges' onPress={() => navigate}></Button>
+    headerRight: <Button title='Pick Judges' ></Button>
   }
 
   render() {
