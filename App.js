@@ -1,23 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
+import AuthScreen from './Screens/AuthScreen.js'
+import WelcomeScreen from './Screens/WelcomeScreen.js'
+import UserFeedScreen from './Screens/UserFeedScreen.js'
+import UploadVideoScreen from './Screens/UploadVideoScreen.js'
+import JudgeSelectScreen from './Screens/JudgeSelectScreen.js'
+import ConfirmScreen from './Screens/ConfirmScreen.js'
 
 export default class App extends React.Component {
   render() {
+
+    const MainNavigator = TabNavigator({
+      Welcome: {screen: WelcomeScreen},
+      Auth: {screen: AuthScreen},
+      Main: {
+        screen: TabNavigator({
+          UserHome: { screen: UserFeedScreen },
+          UploadVideo: {
+            screen: StackNavigator({
+              UploadVideoScreen: {screen: UploadVideoScreen},
+              JudgeSelectScreen: {screen: JudgeSelectScreen},
+              ConfirmScreen: {screen: ConfirmScreen}
+          })
+        }
+        })
+      }
+
+    });
     return (
-      <View style={styles.container}>
-        <Text></Text>
-      </View>
+        <MainNavigator />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
