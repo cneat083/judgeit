@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
 
+class UploadVideoScreen extends Component {
+  static navigationOptions = props => {
+    const {navigate} = props.navigation;
+    return {
+      title: `Upload Video`,
 
-export default class UploadVideoScreen extends React.Component {
-
-  static navigationOptions = {
-    title: 'Upload Routine',
-    headerRight: <Button title= 'Pick Judges' ></Button>
+    }
   }
 
   render() {
+   const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <Text> UploadVideoScreen</Text>
+        <Button title="Work" onPress={() => navigate('UploadVideoScreen')} />
       </View>
     );
   }
@@ -28,3 +31,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default UploadVideoScreen
