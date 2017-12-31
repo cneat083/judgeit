@@ -13,15 +13,12 @@ import JudgeSelectScreen from './Screens/JudgeSelectScreen.js';
 import ConfirmScreen from './Screens/ConfirmScreen.js';
 
 
-
-
-
 export default class App extends React.Component {
   render() {
 
     const MainNavigator = TabNavigator({
       Welcome: {screen: WelcomeScreen},
-      Auth: {screen: AuthScreen},
+      AuthScreen: {screen: AuthScreen},
       Main: {
         screen: TabNavigator({
           UserHome: { screen: UserFeedScreen },
@@ -35,6 +32,11 @@ export default class App extends React.Component {
         })
       }
 
+    }, {
+      lazy: true,
+      navigationOptions: {
+          tabBarVisible: false,
+        }
     });
     return (
       <Provider store={store}>

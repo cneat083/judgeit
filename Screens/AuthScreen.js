@@ -1,18 +1,45 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import { connect } from 'react-redux';
+import * as actions from '../Actions'
+import { Button } from 'react-native-elements';
 
 
 
-export default class AuthScreen extends React.Component {
+class AuthScreen extends React.Component {
+  componentDidMount() {
+    this.props.facebookLogin();
+    this.onAuthComplete(this.props);
+    console.log(this.props)
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.onAuthComplete(nextProps);
+    console.log('NextProps =' + NextProps)
+  }
+
+  onAuthComplete(props) {
+    if(props.token){
+      this.props.navigation.navigate('UserHome')
+    }
+  }
   render() {
+    const {navigate} = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Text>Auth Screen 2</Text>
+        <Button title="Work" onPress={() => navigate('Main')} />
+        <Button title="RemoveToken" onPress={() => AsyncStorage.removeItem('fb_token')} />
+
       </View>
     );
   }
 }
 
+function mapStateToProps({ auth }) {
+  return { token: auth.token };
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,3 +48,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default connect(null, actions)(AuthScreen);
