@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
-
 class UploadVideoScreen extends Component {
   static navigationOptions = props => {
-    const {navigate} = props.navigation;
+    const { navigate } = props.navigation;
     return {
-      title: `Upload Video`,
-
-    }
-  }
+      title: 'Upload Video'
+    };
+  };
 
   render() {
-   const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Text> UploadVideoScreen</Text>
@@ -28,8 +26,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
 
-export default UploadVideoScreen
+export default UploadVideoScreen;
