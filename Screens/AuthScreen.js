@@ -25,11 +25,10 @@ class AuthScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Auth Screen 2</Text>
-        <Button title="Work" onPress={() => navigate('Main')} />
-        <Button
-          title="RemoveToken"
-          onPress={() => AsyncStorage.removeItem('fb_token')}
-        />
+        <Button onPress={() => navigate('Main')}>
+          <Text> Navigate to Main </Text>
+        </Button>
+        <Button onPress={() => AsyncStorage.removeItem('fb_token')} />
       </View>
     );
   }

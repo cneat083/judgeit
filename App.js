@@ -12,6 +12,7 @@ import UserFeedScreen from './Screens/UserFeedScreen';
 import UploadVideoScreen from './Screens/UploadVideoScreen';
 import JudgeSelectScreen from './Screens/JudgeSelectScreen';
 import ConfirmScreen from './Screens/ConfirmScreen';
+import UserAccount from './Screens/UserAccountScreen';
 
 export default class App extends React.Component {
   // Initialize Firebase
@@ -56,7 +57,8 @@ export default class App extends React.Component {
                 JudgeSelectScreen: { screen: JudgeSelectScreen },
                 ConfirmScreen: { screen: ConfirmScreen }
               })
-            }
+            },
+            UserAccount: { screen: UserAccount }
           })
         }
       },

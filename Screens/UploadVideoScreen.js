@@ -4,7 +4,6 @@ import { Button } from 'native-base';
 
 class UploadVideoScreen extends Component {
   static navigationOptions = props => {
-    const { navigate } = props.navigation;
     return {
       title: 'Upload Video'
     };
