@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button } from 'native-base';
 import * as firebase from 'firebase';
 
 export default class UserFeedScreen extends React.Component {

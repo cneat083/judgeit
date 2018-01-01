@@ -1,5 +1,6 @@
 import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import { Font } from 'expo';
 import * as firebase from 'firebase';
 
 import { Provider } from 'react-redux';
@@ -23,6 +24,10 @@ export default class App extends React.Component {
       storageBucket: 'judgeit-64269.appspot.com',
       messagingSenderId: '461492351715'
     };
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
+    });
 
     firebase.initializeApp(firebaseConfig);
     // Listen for authentication state to change.
