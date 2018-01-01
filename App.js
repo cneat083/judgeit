@@ -22,7 +22,7 @@ export default class App extends React.Component {
       databaseURL: 'https://judgeit-64269.firebaseio.com',
       projectId: 'judgeit-64269',
       storageBucket: 'judgeit-64269.appspot.com',
-      messagingSenderId: '461492351715',
+      messagingSenderId: '461492351715'
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -36,6 +36,11 @@ export default class App extends React.Component {
       }
       // Do other things
     });
+
+  await Expo.Font.loadAsync({
+  'Roboto': require('native-base/Fonts/Roboto.ttf'),
+  'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+});
   }
 
   render() {

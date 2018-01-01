@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
+import { Button } from 'native-base';
 import * as actions from '../Actions';
 
 class AuthScreen extends React.Component {

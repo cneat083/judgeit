@@ -12,6 +12,7 @@
     "consistent-return": "off",
     "space-before-function-paren": "off",
     "function-paren-newline": "off",
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "class-methods-use-this": "off"
   }
 }
