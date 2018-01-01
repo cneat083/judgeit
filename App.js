@@ -22,7 +22,7 @@ export default class App extends React.Component {
       databaseURL: 'https://judgeit-64269.firebaseio.com',
       projectId: 'judgeit-64269',
       storageBucket: 'judgeit-64269.appspot.com',
-      messagingSenderId: '461492351715'
+      messagingSenderId: '461492351715',
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -50,18 +50,18 @@ export default class App extends React.Component {
               screen: StackNavigator({
                 UploadVideoScreen: { screen: UploadVideoScreen },
                 JudgeSelectScreen: { screen: JudgeSelectScreen },
-                ConfirmScreen: { screen: ConfirmScreen }
-              })
-            }
-          })
-        }
+                ConfirmScreen: { screen: ConfirmScreen },
+              }),
+            },
+          }),
+        },
       },
       {
         lazy: true,
         navigationOptions: {
-          tabBarVisible: false
-        }
-      }
+          tabBarVisible: false,
+        },
+      },
     );
     return (
       <Provider store={store}>
