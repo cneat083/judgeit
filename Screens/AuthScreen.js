@@ -11,12 +11,10 @@ class AuthScreen extends React.Component {
 
     this.props.facebookLogin();
     this.onAuthComplete(this.props);
-    console.log(this.props)
   }
 
   componentWillReceiveProps(nextProps) {
     this.onAuthComplete(nextProps);
-    console.log(nextProps);
   }
 
   onAuthComplete(props) {

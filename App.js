@@ -32,6 +32,18 @@ export default class App extends React.Component {
       };
 
     firebase.initializeApp(firebaseConfig);
+  // Listen for authentication state to change.
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user)
+      if (user != null) {
+        console.log("We are authenticated now!");
+      }
+      else {
+        console.log('No Auth')
+
+      }
+        // Do other things
+    });
   }
 
   render() {
