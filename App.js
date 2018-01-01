@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import * as firebase from 'firebase';
+
 import { Provider } from 'react-redux';
 import store from './Store';
 
@@ -13,7 +15,25 @@ import JudgeSelectScreen from './Screens/JudgeSelectScreen.js';
 import ConfirmScreen from './Screens/ConfirmScreen.js';
 
 
+
+
+
 export default class App extends React.Component {
+
+  // Initialize Firebase
+  componentWillMount() {
+    const firebaseConfig = {
+        apiKey: "AIzaSyDhNPiHHCCDVYBPjZjVkjjm4dUnCNGccvs",
+        authDomain: "judgeit-64269.firebaseapp.com",
+        databaseURL: "https://judgeit-64269.firebaseio.com",
+        projectId: "judgeit-64269",
+        storageBucket: "judgeit-64269.appspot.com",
+        messagingSenderId: "461492351715"
+      };
+
+    firebase.initializeApp(firebaseConfig);
+  }
+
   render() {
 
     const MainNavigator = TabNavigator({

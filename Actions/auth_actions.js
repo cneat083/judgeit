@@ -11,6 +11,8 @@ import {
 //AsyncStorage.getItem('fb_token');
 
 
+
+//CLEANUP THIS LOGIC!!!
 export const facebookLogin = () => async (dispatch) => {
   let token = await AsyncStorage.getItem('fb_token');
 
@@ -21,7 +23,6 @@ export const facebookLogin = () => async (dispatch) => {
   else {
     //Start FB Login Process
     doFacebookLogin(dispatch);
-
   }
 };
   const doFacebookLogin = async (dispatch) => {
@@ -33,7 +34,7 @@ export const facebookLogin = () => async (dispatch) => {
     if (type === 'cancel') {
       return dispatch({ type: FACEBOOK_LOGIN_FAIL})
     }
+    await AsyncStorage.setItem('fb_token', token)
 
-    await AsyncStorage.setItem('fb_token', token);
     dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token })
-  }
+};
