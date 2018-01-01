@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import * as firebase from 'firebase';
 
@@ -15,7 +14,7 @@ import ConfirmScreen from './Screens/ConfirmScreen';
 
 export default class App extends React.Component {
   // Initialize Firebase
-  componentWillMount() {
+  async componentWillMount() {
     const firebaseConfig = {
       apiKey: 'AIzaSyDhNPiHHCCDVYBPjZjVkjjm4dUnCNGccvs',
       authDomain: 'judgeit-64269.firebaseapp.com',
@@ -36,11 +35,6 @@ export default class App extends React.Component {
       }
       // Do other things
     });
-
-  await Expo.Font.loadAsync({
-  'Roboto': require('native-base/Fonts/Roboto.ttf'),
-  'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
-});
   }
 
   render() {
@@ -55,18 +49,18 @@ export default class App extends React.Component {
               screen: StackNavigator({
                 UploadVideoScreen: { screen: UploadVideoScreen },
                 JudgeSelectScreen: { screen: JudgeSelectScreen },
-                ConfirmScreen: { screen: ConfirmScreen },
-              }),
-            },
-          }),
-        },
+                ConfirmScreen: { screen: ConfirmScreen }
+              })
+            }
+          })
+        }
       },
       {
         lazy: true,
         navigationOptions: {
-          tabBarVisible: false,
-        },
-      },
+          tabBarVisible: false
+        }
+      }
     );
     return (
       <Provider store={store}>

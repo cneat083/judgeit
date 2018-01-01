@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'native-base';
+import { Button } from 'react-native-elements';
 import * as firebase from 'firebase';
 
 class WelcomeScreen extends Component {
@@ -42,6 +42,10 @@ class WelcomeScreen extends Component {
       <View style={styles.container}>
         <Text> Welcome Screen 2</Text>
         <Button title="Work" onPress={() => navigate('AuthScreen')} />
+        <Button block primary onPress={() => navigate('AuthScreen')}>
+          <Text> Light </Text>
+        </Button>
+
         <Button
           raised
           large

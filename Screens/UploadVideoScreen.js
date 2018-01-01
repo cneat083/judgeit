@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'native-base';
+import { Button } from 'react-native-elements';
 
 class UploadVideoScreen extends Component {
   static navigationOptions = props => {
