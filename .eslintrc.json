@@ -9,6 +9,9 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "arrow-parens": ["error", "as-needed"],
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "space-before-function-paren": "off",
+    "function-paren-newline": "off",
+    "comma-dangle": ["error", "never"]
   }
 }
