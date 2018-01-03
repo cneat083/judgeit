@@ -72,6 +72,13 @@ const styles = {
 };
 
 class WelcomeScreen extends Component {
+  static navigationOptions = {
+    header: null
+  };
+  componentDidMount() {
+    console.log('Welcome Screen Rendered');
+  }
+
   placeHolder() {
     console.log('testing');
   }

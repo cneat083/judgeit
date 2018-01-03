@@ -5,7 +5,8 @@ import { Button } from 'native-base';
 import * as actions from '../Actions';
 
 class AuthScreen extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
+    console.log('logging in to facebook -- auth screen rendering');
     this.props.facebookLogin();
     this.onAuthComplete(this.props);
   }
@@ -19,9 +20,9 @@ class AuthScreen extends React.Component {
       this.props.navigation.navigate('UserHome');
     }
   }
+
   render() {
     const { navigate } = this.props.navigation;
-
     return (
       <View style={styles.container}>
         <Text>Auth Screen 2</Text>

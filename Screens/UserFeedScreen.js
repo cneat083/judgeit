@@ -60,6 +60,9 @@ const styles = {
 };
 
 export default class UserFeedScreen extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
   storeHighScore = (userId, score) => {
     console.log(userId + score);
     userId = firebase.auth().currentUser.uid;
@@ -74,13 +77,22 @@ export default class UserFeedScreen extends React.Component {
     }
   };
   signUserOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then(
+        () => {
+          console.log('Signed Out');
+        },
+        () => {
+          console.error('Sign Out Error', error);
+        }
+      );
+    AsyncStorage.removeItem('fb_token');
     const { navigate } = this.props.navigation;
     // Sign-out successful.
     navigate('Welcome');
     console.log('Signed Out User');
-
-    // An error happened.
-    console.log('Houston we have a problem');
   }
 
   render() {

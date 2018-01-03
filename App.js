@@ -44,7 +44,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const MainNavigator = TabNavigator(
+    const MainNavigator = StackNavigator(
       {
         Welcome: { screen: WelcomeScreen },
         AuthScreen: { screen: AuthScreen },
@@ -65,7 +65,8 @@ export default class App extends React.Component {
       {
         lazy: true,
         navigationOptions: {
-          tabBarVisible: false
+          tabBarVisible: false,
+          tabBarOnPress: console.log('tabBarPressed')
         }
       }
     );

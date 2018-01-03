@@ -9,7 +9,7 @@ import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from './types';
 
 // CLEANUP THIS LOGIC!!!
 export const facebookLogin = () => async dispatch => {
-  let token = await AsyncStorage.getItem('fb_token');
+  const token = await AsyncStorage.getItem('fb_token');
 
   if (token) {
     // If exists dispatch action
@@ -24,8 +24,8 @@ const doFacebookLogin = async dispatch => {
   const { type, token } = await Facebook.logInWithReadPermissionsAsync(
     '366125177182937',
     {
-      permissions: ['public_profile'],
-    },
+      permissions: ['public_profile']
+    }
   );
 
   if (type === 'cancel') {

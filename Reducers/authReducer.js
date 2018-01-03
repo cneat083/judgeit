@@ -15,6 +15,7 @@ export default function(state = {}, action) {
         .auth()
         .signInWithCredential(credential)
         .catch(error => {
+          console.log(error);
           // Handle Errors here.
         });
       return { token: credential };
