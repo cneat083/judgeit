@@ -3,10 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'native-base';
 
 class UploadVideoScreen extends Component {
-  static navigationOptions = props => {
-    return {
-      title: 'Upload Video'
-    };
+  static navigationOptions = {
+    title: 'Upload Video',
+    header: null
   };
 
   render() {
@@ -14,7 +13,9 @@ class UploadVideoScreen extends Component {
     return (
       <View style={styles.container}>
         <Text> UploadVideoScreen</Text>
-        <Button title="Work" onPress={() => navigate('UploadVideoScreen')} />
+        <Button onPress={() => navigate('JudgeSelectScreen')}>
+          <Text> Judge Select Screen </Text>
+        </Button>
       </View>
     );
   }

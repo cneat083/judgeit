@@ -50,7 +50,7 @@ export default class App extends React.Component {
         AuthScreen: { screen: AuthScreen },
         Main: {
           screen: TabNavigator({
-            UserHome: { screen: UserFeedScreen },
+            UserFeedScreen: { screen: UserFeedScreen },
             UploadVideo: {
               screen: StackNavigator({
                 UploadVideoScreen: { screen: UploadVideoScreen },

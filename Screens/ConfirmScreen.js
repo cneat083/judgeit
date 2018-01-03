@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default class ConfirmScreen extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Text> ConfirmScreen </Text>

@@ -17,7 +17,7 @@ class AuthScreen extends React.Component {
 
   onAuthComplete(props) {
     if (props.token) {
-      this.props.navigation.navigate('UserHome');
+      this.props.navigation.navigate('Main');
     }
   }
 
