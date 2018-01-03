@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 
 class UploadVideoScreen extends Component {
   static navigationOptions = {
     title: 'Upload Video',
-    header: null
+    header: null,
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="ios-videocam-outline" style={{ color: tintColor }} />
+    )
   };
+
+  componentDidMount() {
+    console.log('UploadVideoScreen');
+  }
 
   render() {
     const { navigate } = this.props.navigation;

@@ -49,17 +49,30 @@ export default class App extends React.Component {
         Welcome: { screen: WelcomeScreen },
         AuthScreen: { screen: AuthScreen },
         Main: {
-          screen: TabNavigator({
-            UserFeedScreen: { screen: UserFeedScreen },
-            UploadVideo: {
-              screen: StackNavigator({
-                UploadVideoScreen: { screen: UploadVideoScreen },
-                JudgeSelectScreen: { screen: JudgeSelectScreen },
-                ConfirmScreen: { screen: ConfirmScreen }
-              })
+          screen: TabNavigator(
+            {
+              UserFeedScreen: { screen: UserFeedScreen },
+              UploadVideo: {
+                screen: StackNavigator({
+                  UploadVideoScreen: { screen: UploadVideoScreen },
+                  JudgeSelectScreen: { screen: JudgeSelectScreen },
+                  ConfirmScreen: { screen: ConfirmScreen }
+                })
+              },
+              UserAccount: { screen: UserAccount }
             },
-            UserAccount: { screen: UserAccount }
-          })
+            {
+              tabBarPosition: 'bottom',
+              swipeEnabled: true,
+              animationEnabled: true,
+              tabBarOptions: {
+                activeTintColor: '#e91e63',
+                labelStyle: {
+                  marginBottom: 3
+                }
+              }
+            }
+          )
         }
       },
       {

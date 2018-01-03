@@ -61,7 +61,11 @@ const styles = {
 
 export default class UserFeedScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    header: null,
+    title: 'Home',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="ios-home-outline" style={{ color: tintColor }} />
+    )
   };
   storeHighScore = (userId, score) => {
     console.log(userId + score);
