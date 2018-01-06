@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, AsyncStorage } from 'react-native';
+import { Video } from 'expo';
 import {
   Container,
   Button,
@@ -113,12 +114,17 @@ export default class UserFeedScreen extends React.Component {
               </Right>
             </CardItem>
             <CardItem cardBody>
-              <Image
+              <Video
                 source={{
                   uri:
-                    'http://assets.nydailynews.com/polopoly_fs/1.3570957.1508312276!/img/httpImage/image.jpg_gen/derivatives/article_750/olympic-trials-gymnastics.jpg'
+                    'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
                 }}
-                style={{ height: 200, width: null, flex: 1 }}
+                rate={1.0}
+                volume={1.0}
+                isMuted={false}
+                resizeMode="cover"
+                useNativeControls
+                style={{ width: null, height: 300, flex: 1 }}
               />
             </CardItem>
           </Card>

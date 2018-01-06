@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import {
   Container,
   Button,
-  Body,
   Header,
   Text,
   Content,
-  H3,
   Icon,
   Item,
   Input,
-  Label,
-  Title
+  Label
 } from 'native-base';
 
 const styles = {
@@ -26,7 +23,7 @@ const styles = {
     fontWeight: 'bold'
   },
   uploadButton: {
-    marginTop: '15%',
+    marginTop: 60,
     alignSelf: 'center'
   },
   uploadIcon: {
@@ -107,9 +104,11 @@ class UploadVideoScreen extends Component {
           <Button
             style={styles.nextButton}
             block
+            iconRight
             onPress={() => navigate('JudgeSelectScreen')}
           >
-            <Text> Next </Text>
+            <Text> Select Judges </Text>
+            <Icon name="ios-arrow-forward-outline" />
           </Button>
         </Content>
       </Container>
