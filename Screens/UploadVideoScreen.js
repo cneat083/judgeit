@@ -2,67 +2,20 @@ import React, { Component } from 'react';
 import {
   Container,
   Button,
-  Body,
   Header,
   Text,
   Content,
-  H3,
   Icon,
   Item,
   Input,
-  Label,
-  Title
+  Label
 } from 'native-base';
+import { ImagePicker, Video } from 'expo';
+import * as firebase from 'firebase';
+import base64 from 'base-64';
 
-const styles = {
-  content: {
-    backgroundColor: 'white'
-  },
-  header: {
-    backgroundColor: '#5c6bc0'
-  },
-  headerText: {
-    color: 'white',
-    fontWeight: 'bold'
-  },
-  uploadButton: {
-    marginTop: '15%',
-    alignSelf: 'center'
-  },
-  uploadIcon: {
-    fontSize: 100,
-    color: '#ef5350'
-  },
-  iconText: {
-    marginTop: 30,
-    alignSelf: 'center'
-  },
-  nextButton: {
-    width: '75%',
-    marginTop: 60,
-    alignSelf: 'center',
-    backgroundColor: '#ef5350'
-  },
-  textInput: {
-    textAlign: 'center'
-  },
-  textInputItemName: {
-    marginTop: 40,
-    alignSelf: 'center',
-    minWidth: 300,
-    width: '70%',
-    borderBottomWidth: 2
-  },
-  textInputItemSmall: {
-    marginTop: 20,
-    alignSelf: 'center',
-    width: 100,
-    borderBottomWidth: 2
-  },
-  inputLabel: {
-    alignSelf: 'center'
-  }
-};
+import styles from './UploadVideoScreenStyles';
+
 class UploadVideoScreen extends Component {
   static navigationOptions = {
     title: 'Upload Video',
@@ -72,9 +25,28 @@ class UploadVideoScreen extends Component {
     )
   };
 
+  state = {
+    uri: ''
+  };
+
   componentDidMount() {
     console.log('UploadVideoScreen');
   }
+
+  pickVideo = async () => {
+    console.log('picking video');
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: 'Images',
+      allowEditing: true
+    });
+
+    this.setState({ uri: result.uri });
+    console.log(result.uri);
+  };
+
+  uploadVideo = pickerResult => {
+    console.log(pickerResult);
+  };
 
   render() {
     const { navigate } = this.props.navigation;
@@ -83,10 +55,22 @@ class UploadVideoScreen extends Component {
         <Header style={styles.header} />
         <Content style={styles.content}>
           <Button
-            onPress={() => console.log('Added Video')}
+            onPress={this.pickVideo}
             style={styles.uploadButton}
             transparent
           >
+            <Icon style={styles.uploadIcon} name="ios-add-circle-outline" />
+          </Button>
+          <Video
+            source={{ uri: this.state.uri }}
+            rate={1.0}
+            volume={1.0}
+            isMuted={false}
+            resizeMode="cover"
+            useNativeControls
+            style={{ width: null, height: 300, flex: 1 }}
+          />
+          <Button onPress={() => this.uploadVideo(this.state.uri)} block>
             <Icon style={styles.uploadIcon} name="ios-add-circle-outline" />
           </Button>
           <Item style={styles.textInputItemName}>
@@ -107,9 +91,11 @@ class UploadVideoScreen extends Component {
           <Button
             style={styles.nextButton}
             block
+            iconRight
             onPress={() => navigate('JudgeSelectScreen')}
           >
-            <Text> Next </Text>
+            <Text> Select Judges </Text>
+            <Icon name="ios-arrow-forward-outline" />
           </Button>
         </Content>
       </Container>

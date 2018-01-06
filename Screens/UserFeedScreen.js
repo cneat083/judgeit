@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, AsyncStorage } from 'react-native';
+import { Video } from 'expo';
 import {
   Container,
   Button,
@@ -7,12 +8,8 @@ import {
   Header,
   Text,
   Content,
-  H2,
   H3,
   Icon,
-  Tab,
-  Tabs,
-  TabHeading,
   Card,
   CardItem,
   Thumbnail,
@@ -22,29 +19,7 @@ import {
 
 import * as firebase from 'firebase';
 
-const styles = {
-  content: {
-    backgroundColor: '#e0e1e0'
-  },
-  header: {
-    backgroundColor: '#5c6bc0'
-  },
-  headerText: {
-    marginTop: 15,
-    color: 'white',
-    fontWeight: 'bold'
-  },
-  card: {
-    marginTop: 8,
-    marginLeft: 8,
-    marginRight: 8,
-    backgroundColor: '#f5f5f6'
-  },
-  h3: {
-    fontWeight: 'bold',
-    color: '#3AAFA9'
-  }
-};
+import styles from './UserFeedScreenStyles';
 
 export default class UserFeedScreen extends React.Component {
   static navigationOptions = {
@@ -54,8 +29,11 @@ export default class UserFeedScreen extends React.Component {
       <Icon name="ios-home-outline" style={{ color: tintColor }} />
     )
   };
+
+  state = {
+    loadStart: true
+  };
   storeHighScore = (userId, score) => {
-    console.log(userId + score);
     userId = firebase.auth().currentUser.uid;
     console.log(userId + score);
     if (userId !== 'No user') {
@@ -67,7 +45,7 @@ export default class UserFeedScreen extends React.Component {
         });
     }
   };
-  signUserOut() {
+  signUserOut = () => {
     firebase
       .auth()
       .signOut()
@@ -84,7 +62,19 @@ export default class UserFeedScreen extends React.Component {
     // Sign-out successful.
     navigate('Welcome');
     console.log('Signed Out User');
-  }
+  };
+  onLoadStart = () => {
+    console.log('ON LOAD START');
+  };
+
+  onLoad = status => {
+    console.log(`ON LOAD : ${JSON.stringify(status)}`);
+    this.setState({ loadStart: false });
+  };
+
+  onError = error => {
+    console.log(`ON ERROR : ${error}`);
+  };
 
   render() {
     const userId = 'No user';
@@ -113,12 +103,25 @@ export default class UserFeedScreen extends React.Component {
               </Right>
             </CardItem>
             <CardItem cardBody>
-              <Image
+              <Video
                 source={{
                   uri:
-                    'http://assets.nydailynews.com/polopoly_fs/1.3570957.1508312276!/img/httpImage/image.jpg_gen/derivatives/article_750/olympic-trials-gymnastics.jpg'
+                    'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
                 }}
-                style={{ height: 200, width: null, flex: 1 }}
+                posterSource={{
+                  uri:
+                    'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
+                }}
+                rate={1.0}
+                volume={1.0}
+                isMuted={false}
+                onLoadStart={this.onLoadStart}
+                onLoad={this.onLoad}
+                onError={this.onError}
+                usePoster={this.state.loadStart}
+                resizeMode="cover"
+                useNativeControls
+                style={{ width: null, height: 300, flex: 1 }}
               />
             </CardItem>
           </Card>
@@ -151,19 +154,7 @@ export default class UserFeedScreen extends React.Component {
               />
             </CardItem>
           </Card>
-          <Button
-            title="RemoveToken"
-            onPress={() => AsyncStorage.removeItem('fb_token')}
-          />
-          <Button
-            title="Send Data to Firebase"
-            onPress={() => this.storeHighScore(userId, 55)}
-          />
-          <Button
-            block
-            style={styles.button}
-            onPress={() => this.signUserOut()}
-          >
+          <Button block style={styles.button} onPress={this.signUserOut}>
             <Text style={styles.buttonText}> Sign Out </Text>
           </Button>
           <Button
