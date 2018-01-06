@@ -66,9 +66,12 @@ export default class App extends React.Component {
               swipeEnabled: true,
               animationEnabled: true,
               tabBarOptions: {
-                activeTintColor: '#e91e63',
+                activeTintColor: '#ef5350',
                 labelStyle: {
                   marginBottom: 3
+                },
+                style: {
+                  backgroundColor: '#f5f5f6'
                 }
               }
             }
