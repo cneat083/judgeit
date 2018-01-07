@@ -11,8 +11,6 @@ import {
   Label
 } from 'native-base';
 import { ImagePicker, Video } from 'expo';
-import * as firebase from 'firebase';
-import base64 from 'base-64';
 
 import styles from './UploadVideoScreenStyles';
 
