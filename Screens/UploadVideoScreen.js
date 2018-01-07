@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Image } from 'react-native';
 import {
   Container,
   Button,
@@ -12,7 +13,6 @@ import {
 } from 'native-base';
 import { ImagePicker, Video } from 'expo';
 import * as firebase from 'firebase';
-import base64 from 'base-64';
 
 import styles from './UploadVideoScreenStyles';
 
@@ -26,7 +26,8 @@ class UploadVideoScreen extends Component {
   };
 
   state = {
-    uri: ''
+    uri: '',
+    uri2: ''
   };
 
   componentDidMount() {
@@ -36,7 +37,7 @@ class UploadVideoScreen extends Component {
   pickVideo = async () => {
     console.log('picking video');
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: 'Images',
+      mediaTypes: 'Videos',
       allowEditing: true
     });
 
@@ -44,8 +45,33 @@ class UploadVideoScreen extends Component {
     console.log(result.uri);
   };
 
-  uploadVideo = pickerResult => {
-    console.log(pickerResult);
+  uploadVideo = async uri => {
+    console.log(uri);
+    let apiUrl =
+      'https://us-central1-judgeit-64269.cloudfunctions.net/api/picture';
+
+    const name = `movie.mov`;
+    const body = new FormData();
+    body.append('movie', {
+      uri: uri,
+      name,
+      type: 'video/mov'
+    });
+    const res = await fetch(apiUrl, {
+      method: 'POST',
+      body,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log(
+      'logging result ' + res.status + ' ' + res.headers + ' ' + res.statusText
+    );
+    const storage = await firebase.storage();
+    const pathReference = await storage.ref('/movie.mov').getDownloadURL();
+    this.setState({ uri2: pathReference });
+    console.log('report ' + pathReference);
   };
 
   render() {
@@ -71,7 +97,7 @@ class UploadVideoScreen extends Component {
             style={{ width: null, height: 300, flex: 1 }}
           />
           <Button onPress={() => this.uploadVideo(this.state.uri)} block>
-            <Icon style={styles.uploadIcon} name="ios-add-circle-outline" />
+            <Text> Upload Video </Text>
           </Button>
           <Item style={styles.textInputItemName}>
             <Input
@@ -97,6 +123,15 @@ class UploadVideoScreen extends Component {
             <Text> Select Judges </Text>
             <Icon name="ios-arrow-forward-outline" />
           </Button>
+          <Video
+            source={{ uri: this.state.uri2 }}
+            rate={1.0}
+            volume={1.0}
+            isMuted={false}
+            resizeMode="cover"
+            useNativeControls
+            style={{ width: null, height: 300, flex: 1 }}
+          />
         </Content>
       </Container>
     );

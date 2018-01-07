@@ -42,7 +42,6 @@ export default class App extends React.Component {
       // Do other things
     });
   }
-
   render() {
     const MainNavigator = StackNavigator(
       {

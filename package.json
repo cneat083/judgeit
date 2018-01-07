@@ -3,9 +3,12 @@
   "private": true,
   "dependencies": {
     "@expo/vector-icons": "^6.2.2",
-    "base-64": "^0.1.0",
+    "@google-cloud/storage": "^1.5.2",
     "expo": "^24.0.0",
+    "express": "^4.16.2",
     "firebase": "^4.8.1",
+    "firebase-admin": "^5.7.0",
+    "firebase-functions": "^0.8.0",
     "native-base": "^2.3.5",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
