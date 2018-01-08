@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import { Font } from 'expo';
+import { Font, expo } from 'expo';
 import * as firebase from 'firebase';
 
 import { Provider } from 'react-redux';
@@ -14,7 +14,7 @@ import JudgeSelectScreen from './Screens/JudgeSelectScreen';
 import ConfirmScreen from './Screens/ConfirmScreen';
 import UserAccount from './Screens/UserAccountScreen';
 
-export default class App extends React.Component {
+class App extends React.Component {
   // Initialize Firebase
   async componentWillMount() {
     const firebaseConfig = {
@@ -92,3 +92,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;

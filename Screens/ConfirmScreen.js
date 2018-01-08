@@ -17,6 +17,8 @@ import {
   ListItem,
   Right
 } from 'native-base';
+import { Video } from 'expo';
+import * as firebase from 'firebase';
 
 import styles from './ConfirmScreenStyles';
 
@@ -28,8 +30,16 @@ export default class ConfirmScreen extends React.Component {
       <Icon name="ios-videocam-outline" style={{ color: tintColor }} />
     )
   };
-  componentDidMount() {
+
+  state = {
+    uri: ''
+  };
+
+  async componentDidMount() {
     console.log('ConfirmScreen Loaded');
+    const storage = await firebase.storage();
+    const pathReference = await storage.ref('/movie.mov').getDownloadURL();
+    this.setState({ uri: pathReference });
   }
   render() {
     const { navigate, goBack } = this.props.navigation;
@@ -46,12 +56,14 @@ export default class ConfirmScreen extends React.Component {
         <Content style={styles.content}>
           <Card style={styles.card}>
             <CardItem cardBody>
-              <Image
-                source={{
-                  uri:
-                    'http://assets.nydailynews.com/polopoly_fs/1.3570957.1508312276!/img/httpImage/image.jpg_gen/derivatives/article_750/olympic-trials-gymnastics.jpg'
-                }}
-                style={{ height: 200, width: null, flex: 1 }}
+              <Video
+                source={{ uri: this.state.uri }}
+                rate={1.0}
+                volume={1.0}
+                isMuted={false}
+                resizeMode="cover"
+                useNativeControls
+                style={{ width: null, height: 300, flex: 1 }}
               />
             </CardItem>
           </Card>

@@ -19,6 +19,9 @@ const styles = {
   h3: {
     fontWeight: 'bold',
     color: '#3AAFA9'
+  },
+  button: {
+    marginTop: 20
   }
 };
 

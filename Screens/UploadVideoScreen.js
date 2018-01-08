@@ -46,7 +46,7 @@ class UploadVideoScreen extends Component {
 
   uploadVideo = async uri => {
     console.log(uri);
-    let apiUrl =
+    const apiUrl =
       'https://us-central1-judgeit-64269.cloudfunctions.net/api/picture';
 
     const name = `movie.mov`;
@@ -85,18 +85,6 @@ class UploadVideoScreen extends Component {
             transparent
           >
             <Icon style={styles.uploadIcon} name="ios-add-circle-outline" />
-          </Button>
-          <Video
-            source={{ uri: this.state.uri }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="cover"
-            useNativeControls
-            style={{ width: null, height: 300, flex: 1 }}
-          />
-          <Button onPress={() => this.uploadVideo(this.state.uri)} block>
-            <Text> Upload Video </Text>
           </Button>
           <Item style={styles.textInputItemName}>
             <Input

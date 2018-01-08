@@ -14,14 +14,18 @@ import {
   CardItem,
   Thumbnail,
   Left,
+  List,
+  ListItem,
   Right
 } from 'native-base';
 
 import * as firebase from 'firebase';
 
+import data from '../TestData/UserFeedScreenData';
 import styles from './UserFeedScreenStyles';
+import UserFeedCard from '../Components/UserFeedCard';
 
-export default class UserFeedScreen extends React.Component {
+class UserFeedScreen extends React.Component {
   static navigationOptions = {
     header: null,
     title: 'Home',
@@ -31,7 +35,8 @@ export default class UserFeedScreen extends React.Component {
   };
 
   state = {
-    loadStart: true
+    loadStart: true,
+    data: data
   };
   storeHighScore = (userId, score) => {
     userId = firebase.auth().currentUser.uid;
@@ -76,6 +81,20 @@ export default class UserFeedScreen extends React.Component {
     console.log(`ON ERROR : ${error}`);
   };
 
+  renderList = item => {
+    return (
+      <UserFeedCard
+        onLoadStart={this.onLoadStart}
+        athleteThumbnailSource={item.athleteThumbnailSource}
+        athleteName={item.athleteName}
+        athleteEvent={item.athleteEvent}
+        athleteLevel={item.athleteLevel}
+        eventScore={item.eventScore}
+        videoSrc={item.videoSrc}
+      />
+    );
+  };
+
   render() {
     const userId = 'No user';
 
@@ -83,77 +102,8 @@ export default class UserFeedScreen extends React.Component {
       <Container>
         <Header style={styles.header} />
         <Content style={styles.content}>
-          <Card style={styles.card}>
-            <CardItem>
-              <Left>
-                <Thumbnail
-                  source={{
-                    uri:
-                      'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAfzAAAAJGFhNTYyNThiLTQ4OWUtNGQ2Mi1hZTVhLWVjYzEzYmRiYTM3OA.jpg'
-                  }}
-                />
-                <Body>
-                  <Text>Kelli Corbin</Text>
-                  <Text note>Floor</Text>
-                  <Text note>Level 10</Text>
-                </Body>
-              </Left>
-              <Right>
-                <H3 style={styles.h3}>9.8</H3>
-              </Right>
-            </CardItem>
-            <CardItem cardBody>
-              <Video
-                source={{
-                  uri:
-                    'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
-                }}
-                posterSource={{
-                  uri:
-                    'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
-                }}
-                rate={1.0}
-                volume={1.0}
-                isMuted={false}
-                onLoadStart={this.onLoadStart}
-                onLoad={this.onLoad}
-                onError={this.onError}
-                usePoster={this.state.loadStart}
-                resizeMode="cover"
-                useNativeControls
-                style={{ width: null, height: 300, flex: 1 }}
-              />
-            </CardItem>
-          </Card>
-          <Card style={styles.card}>
-            <CardItem>
-              <Left>
-                <Thumbnail
-                  source={{
-                    uri:
-                      'https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/00c/0b9/0142b85.jpg'
-                  }}
-                />
-                <Body>
-                  <Text>Jasmine Slivka</Text>
-                  <Text note>Beam</Text>
-                  <Text note>Level 7</Text>
-                </Body>
-              </Left>
-              <Right>
-                <H3 style={styles.h3}>8.2</H3>
-              </Right>
-            </CardItem>
-            <CardItem cardBody>
-              <Image
-                source={{
-                  uri:
-                    'https://hips.hearstapps.com/cos.h-cdn.co/assets/16/22/1464712000-gettyimages-520381702.jpg'
-                }}
-                style={{ height: 200, width: null, flex: 1 }}
-              />
-            </CardItem>
-          </Card>
+          <List dataArray={this.state.data} renderRow={this.renderList} />
+
           <Button block style={styles.button} onPress={this.signUserOut}>
             <Text style={styles.buttonText}> Sign Out </Text>
           </Button>
@@ -169,3 +119,5 @@ export default class UserFeedScreen extends React.Component {
     );
   }
 }
+
+export default UserFeedScreen;

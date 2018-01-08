@@ -41,7 +41,8 @@ const styles = {
   },
   seperatorText: {
     alignSelf: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 16
   },
   backButton: {
     color: 'white'
