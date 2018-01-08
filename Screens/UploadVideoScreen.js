@@ -12,7 +12,10 @@ import {
   Label
 } from 'native-base';
 import { ImagePicker, Video } from 'expo';
+<<<<<<< HEAD
 import * as firebase from 'firebase';
+=======
+>>>>>>> 6fbb2b738c42aee6bf05e5457fb010f13cde675c
 
 import styles from './UploadVideoScreenStyles';
 
