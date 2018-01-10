@@ -80,7 +80,7 @@ class UserFeedScreen extends React.Component {
   renderItem = ({ item }) => {
     return (
       <UserFeedCard
-        key={item.id}
+        key={item.key}
         onLoadStart={this.onLoadStart}
         athleteThumbnailSource={item.athleteThumbnailSource}
         athleteName={item.athleteName}
