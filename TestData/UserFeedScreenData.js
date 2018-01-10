@@ -8,7 +8,7 @@ const data = [
     athleteLevel: '8',
     eventScore: '9.9',
     videoSrc:
-      'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
+      'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback%20(2).mp4?alt=media&token=2ef1711b-be3b-44fd-9e86-6c35adabb533'
   },
   {
     key: 2,
@@ -19,7 +19,7 @@ const data = [
     athleteLevel: '7',
     eventScore: '8.2',
     videoSrc:
-      'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback.mp4?alt=media&token=79620c11-4df2-4064-8676-af837174cddf'
+      'https://firebasestorage.googleapis.com/v0/b/judgeit-64269.appspot.com/o/videoplayback%20(1).mp4?alt=media&token=16a8e7e2-17fa-499a-9fe6-8764dab02452'
   }
 ];
 
