@@ -6,7 +6,6 @@ export default function(state = {}, action) {
   switch (action.type) {
     case FACEBOOK_LOGIN_SUCCESS: {
       // Build Firebase credential with the Facebook access token.
-      console.log('Contacting FireBase to Login');
       const credential = firebase.auth.FacebookAuthProvider.credential(
         action.payload
       );
@@ -21,7 +20,6 @@ export default function(state = {}, action) {
       return { token: credential };
     }
     case FACEBOOK_LOGIN_FAIL:
-      console.log('Removing FB Token');
       return { token: null };
     default:
       return state;

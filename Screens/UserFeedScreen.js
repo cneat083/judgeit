@@ -1,27 +1,21 @@
 import React from 'react';
-import { Image, AsyncStorage } from 'react-native';
+import { Image, AsyncStorage, FlatList } from 'react-native';
 import { Video } from 'expo';
+import { connect } from 'react-redux';
+
 import {
   Container,
   Button,
-  Body,
   Header,
   Text,
   Content,
-  H3,
   Icon,
-  Card,
-  CardItem,
-  Thumbnail,
-  Left,
-  List,
-  ListItem,
-  Right
+  List
 } from 'native-base';
 
 import * as firebase from 'firebase';
+import * as actions from '../Actions';
 
-import data from '../TestData/UserFeedScreenData';
 import styles from './UserFeedScreenStyles';
 import UserFeedCard from '../Components/UserFeedCard';
 
@@ -34,10 +28,10 @@ class UserFeedScreen extends React.Component {
     )
   };
 
-  state = {
-    loadStart: true,
-    data: data
-  };
+  componentDidMount() {
+    this.props.renderHomeScreen();
+  }
+
   storeHighScore = (userId, score) => {
     userId = firebase.auth().currentUser.uid;
     console.log(userId + score);
@@ -81,9 +75,12 @@ class UserFeedScreen extends React.Component {
     console.log(`ON ERROR : ${error}`);
   };
 
-  renderList = item => {
+  keyExtractor = (item, index) => item.id;
+
+  renderItem = ({ item }) => {
     return (
       <UserFeedCard
+        key={item.id}
         onLoadStart={this.onLoadStart}
         athleteThumbnailSource={item.athleteThumbnailSource}
         athleteName={item.athleteName}
@@ -94,15 +91,19 @@ class UserFeedScreen extends React.Component {
       />
     );
   };
-
   render() {
     const userId = 'No user';
-
+    console.log('data in render ' + this.props.data);
     return (
       <Container>
         <Header style={styles.header} />
         <Content style={styles.content}>
-          <List dataArray={this.state.data} renderRow={this.renderList} />
+          <FlatList
+            removeClippedSubviews={false}
+            data={this.props.data}
+            extraData={this.state}
+            renderItem={this.renderItem}
+          />
 
           <Button block style={styles.button} onPress={this.signUserOut}>
             <Text style={styles.buttonText}> Sign Out </Text>
@@ -120,4 +121,9 @@ class UserFeedScreen extends React.Component {
   }
 }
 
-export default UserFeedScreen;
+function mapStateToProps({ renderHomeScreen }) {
+  console.log('Data made it to component' + renderHomeScreen.homeScreenData);
+  return { data: renderHomeScreen.homeScreenData };
+}
+
+export default connect(mapStateToProps, actions)(UserFeedScreen);

@@ -6,7 +6,6 @@ import * as actions from '../Actions';
 
 class AuthScreen extends React.Component {
   componentWillMount() {
-    console.log('logging in to facebook -- auth screen rendering');
     this.props.facebookLogin();
     this.onAuthComplete(this.props);
   }
