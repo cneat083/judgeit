@@ -93,7 +93,6 @@ class UserFeedScreen extends React.Component {
   };
   render() {
     const userId = 'No user';
-    console.log('data in render ' + this.props.data);
     return (
       <Container>
         <Header style={styles.header} />
@@ -122,7 +121,6 @@ class UserFeedScreen extends React.Component {
 }
 
 function mapStateToProps({ renderHomeScreen }) {
-  console.log('Data made it to component' + renderHomeScreen.homeScreenData);
   return { data: renderHomeScreen.homeScreenData };
 }
 

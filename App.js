@@ -1,18 +1,11 @@
 import React from 'react';
-import { TabNavigator, StackNavigator } from 'react-navigation';
-import { Font, expo } from 'expo';
+import { Font } from 'expo';
 import * as firebase from 'firebase';
 
 import { Provider } from 'react-redux';
 import store from './Store';
 
-import AuthScreen from './Screens/AuthScreen';
-import WelcomeScreen from './Screens/WelcomeScreen';
-import UserFeedScreen from './Screens/UserFeedScreen';
-import UploadVideoScreen from './Screens/UploadVideoScreen';
-import JudgeSelectScreen from './Screens/JudgeSelectScreen';
-import ConfirmScreen from './Screens/ConfirmScreen';
-import UserAccount from './Screens/UserAccountScreen';
+import MainNavigator from './Navigation/MainNavigator';
 
 class App extends React.Component {
   // Initialize Firebase
@@ -43,48 +36,6 @@ class App extends React.Component {
     });
   }
   render() {
-    const MainNavigator = StackNavigator(
-      {
-        Welcome: { screen: WelcomeScreen },
-        AuthScreen: { screen: AuthScreen },
-        Main: {
-          screen: TabNavigator(
-            {
-              UserFeedScreen: { screen: UserFeedScreen },
-              UploadVideo: {
-                screen: StackNavigator({
-                  UploadVideoScreen: { screen: UploadVideoScreen },
-                  JudgeSelectScreen: { screen: JudgeSelectScreen },
-                  ConfirmScreen: { screen: ConfirmScreen }
-                })
-              },
-              UserAccount: { screen: UserAccount }
-            },
-            {
-              tabBarPosition: 'bottom',
-              swipeEnabled: true,
-              animationEnabled: true,
-              tabBarOptions: {
-                activeTintColor: '#ef5350',
-                labelStyle: {
-                  marginBottom: 3
-                },
-                style: {
-                  backgroundColor: '#f5f5f6'
-                }
-              }
-            }
-          )
-        }
-      },
-      {
-        lazy: true,
-        navigationOptions: {
-          tabBarVisible: false,
-          tabBarOnPress: console.log('tabBarPressed')
-        }
-      }
-    );
     return (
       <Provider store={store}>
         <MainNavigator />

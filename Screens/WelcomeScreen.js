@@ -30,10 +30,10 @@ class WelcomeScreen extends Component {
     return (
       <Container style={styles.container}>
         <Content>
-          <H1 style={styles.h1}> Welcome to Judge It</H1>
+          <H1 style={styles.h1}> Welcome to JudgeIt</H1>
           <Text note style={styles.taglineText}>
             {' '}
-            Upload Your Routine. Get a Score.
+            Upload a Video. Get a Score{' '}
           </Text>
           <Button
             info
