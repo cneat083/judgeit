@@ -2,6 +2,9 @@ const styles = {
   content: {
     backgroundColor: 'white'
   },
+  title: {
+    color: 'white'
+  },
   header: {
     backgroundColor: '#5c6bc0'
   },

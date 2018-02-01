@@ -7,8 +7,10 @@ import {
   Content,
   Icon,
   Item,
+  Title,
   Input,
-  Label
+  Label,
+  Body
 } from 'native-base';
 import { ImagePicker, Video } from 'expo';
 import * as firebase from 'firebase';
@@ -77,7 +79,11 @@ class UploadVideoScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <Container>
-        <Header style={styles.header} />
+        <Header style={styles.header}>
+          <Body>
+            <Title style={styles.title}> Upload Video </Title>
+          </Body>
+        </Header>
         <Content style={styles.content}>
           <Button
             onPress={this.pickVideo}

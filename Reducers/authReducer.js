@@ -20,7 +20,7 @@ export default function(state = {}, action) {
       return { token: credential };
     }
     case FACEBOOK_LOGIN_FAIL:
-      return { token: null };
+      return { token: 'canceled' };
     default:
       return state;
   }

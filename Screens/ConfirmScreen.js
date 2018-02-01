@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image } from 'react-native';
 import {
   Container,
   Button,
@@ -15,7 +14,8 @@ import {
   Thumbnail,
   Left,
   ListItem,
-  Right
+  Right,
+  Title
 } from 'native-base';
 import { Video } from 'expo';
 import * as firebase from 'firebase';
@@ -49,9 +49,13 @@ export default class ConfirmScreen extends React.Component {
         <Header style={styles.header}>
           <Left>
             <Button transparent onPress={() => goBack()}>
-              <Icon style={styles.backButton} name="arrow-back" />
+              <Icon name="arrow-back" style={styles.backButton} />
             </Button>
           </Left>
+          <Body>
+            <Title style={styles.title}>Confirm</Title>
+          </Body>
+          <Right />
         </Header>
         <Content style={styles.content}>
           <Card style={styles.card}>
@@ -107,7 +111,7 @@ export default class ConfirmScreen extends React.Component {
               </Left>
             </CardItem>
           </Card>
-          <List style={styles.list}>
+          <List style={styles.list} button>
             <ListItem>
               <Body>
                 <Text>Payment Amount</Text>
@@ -116,7 +120,7 @@ export default class ConfirmScreen extends React.Component {
                 <Text>6.99</Text>
               </Right>
             </ListItem>
-            <ListItem>
+            <ListItem onPress={() => navigate('SelectPaymentScreen')}>
               <Body>
                 <Text>Payment Method</Text>
               </Body>
@@ -129,11 +133,12 @@ export default class ConfirmScreen extends React.Component {
           <Button
             style={styles.checkoutButton}
             block
-            iconRight
+            iconLeft
             onPress={() => navigate('UploadVideoScreen')}
           >
-            <Text> Get a Score </Text>
             <Icon name="ios-checkmark-circle-outline" />
+
+            <Text>Get My Score</Text>
           </Button>
         </Content>
       </Container>

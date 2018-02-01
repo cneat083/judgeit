@@ -68,7 +68,6 @@ class UserFeedScreen extends React.Component {
 
   onLoad = status => {
     console.log(`ON LOAD : ${JSON.stringify(status)}`);
-    this.setState({ loadStart: false });
   };
 
   onError = error => {

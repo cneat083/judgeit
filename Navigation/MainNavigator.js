@@ -7,6 +7,7 @@ import UploadVideoScreen from '../Screens/UploadVideoScreen';
 import JudgeSelectScreen from '../Screens/JudgeSelectScreen';
 import ConfirmScreen from '../Screens/ConfirmScreen';
 import UserAccount from '../Screens/UserAccountScreen';
+import SelectPaymentScreen from '../Screens/SelectPaymentScreen';
 
 const MainNavigator = StackNavigator(
   {
@@ -20,7 +21,8 @@ const MainNavigator = StackNavigator(
             screen: StackNavigator({
               UploadVideoScreen: { screen: UploadVideoScreen },
               JudgeSelectScreen: { screen: JudgeSelectScreen },
-              ConfirmScreen: { screen: ConfirmScreen }
+              ConfirmScreen: { screen: ConfirmScreen },
+              SelectPaymentScreen: { screen: SelectPaymentScreen }
             })
           },
           UserAccount: { screen: UserAccount }

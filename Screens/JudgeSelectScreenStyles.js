@@ -5,37 +5,41 @@ const styles = {
   header: {
     backgroundColor: '#5c6bc0'
   },
+  title: {
+    color: 'white'
+  },
   headerText: {
     color: 'white',
     fontWeight: 'bold'
   },
   nextButton: {
     width: '75%',
-    marginTop: 80,
+    marginTop: 40,
+    marginBottom: 6,
     alignSelf: 'center',
     backgroundColor: '#ef5350'
-  },
-  selectJudgeText: {
-    marginTop: 20,
-    alignSelf: 'center'
   },
   checkBox: {
     marginRight: 20,
     marginTop: 5
   },
   seperator: {
-    marginTop: 20
+    marginTop: 40
   },
   seperatorText: {
+    marginTop: 30,
     alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 16
+    color: 'grey'
   },
   backButton: {
     color: 'white'
   },
   listContainer: {
     paddingVertical: 20
+  },
+  buttonNote: {
+    alignSelf: 'center',
+    marginTop: 4
   }
 };
 

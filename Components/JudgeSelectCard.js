@@ -20,29 +20,28 @@ class JudgeSelectCard extends React.Component {
   render() {
     return (
       <Card>
-        <CardItem>
+        <CardItem style={{ alignSelf: 'center' }}>
           <Thumbnail
             source={{
               uri: this.props.judgeThumbnail
             }}
           />
         </CardItem>
-        <CardItem>
+        <CardItem style={{ alignSelf: 'center' }}>
           <Text>{this.props.judgeName}</Text>
         </CardItem>
-        <CardItem>
+        <CardItem style={{ alignSelf: 'center' }}>
           <Text note>{this.props.judgeLocation}</Text>
         </CardItem>
-        <CardItem>
+        <CardItem style={{ alignSelf: 'center' }}>
           <Text note>{this.props.judgeLevelString}</Text>
         </CardItem>
-        <CardItem>
+        <CardItem style={{ alignSelf: 'center' }}>
           <Text note>{this.props.judgeEventsScored}</Text>
         </CardItem>
-        <CardItem>
+        <CardItem style={{ alignSelf: 'center' }}>
           <Button block iconRight onPress={() => navigate('ConfirmScreen')}>
             <Text> Select </Text>
-            <Icon name="ios-person-add-outline" />
           </Button>
         </CardItem>
       </Card>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import {
   Container,
   Button,
@@ -10,6 +12,7 @@ import {
   Tabs,
   TabHeading
 } from 'native-base';
+import * as actions from '../Actions';
 
 import styles from './WelcomeScreenStyles';
 
@@ -23,6 +26,18 @@ class WelcomeScreen extends Component {
 
   placeHolder() {
     console.log('testing');
+  }
+
+  onAuthComplete(props) {
+    if (props.token !== 'canceled' && props.token) {
+      console.log('navigating from welcome');
+      this.props.navigation.navigate('Main');
+    }
+  }
+
+  async authWithFacebook() {
+    await this.props.facebookLogin();
+    this.onAuthComplete(this.props);
   }
 
   render() {
@@ -40,7 +55,7 @@ class WelcomeScreen extends Component {
             block
             iconLeft
             style={styles.facebookButton}
-            onPress={() => navigate('AuthScreen')}
+            onPress={() => this.authWithFacebook()}
           >
             <Icon style={styles.facebookIcon} name="logo-facebook" />
             <Text style={styles.facebookButtonText}>
@@ -75,5 +90,8 @@ class WelcomeScreen extends Component {
     );
   }
 }
+function mapStateToProps({ auth }) {
+  return { token: auth.token };
+}
 
-export default WelcomeScreen;
+export default connect(mapStateToProps, actions)(WelcomeScreen);

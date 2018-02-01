@@ -5,6 +5,9 @@ const styles = {
   header: {
     backgroundColor: '#5c6bc0'
   },
+  title: {
+    color: 'white'
+  },
   card: {
     marginTop: 8,
     marginLeft: 8,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, Icon } from 'native-base';
+import { Button, Icon, Container } from 'native-base';
 
 export default class UserAccount extends React.Component {
   static navigationOptions = {
@@ -12,18 +12,9 @@ export default class UserAccount extends React.Component {
   };
   render() {
     return (
-      <View style={styles.container}>
+      <Container>
         <Text> UserAccount Screen </Text>
-      </View>
+      </Container>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});

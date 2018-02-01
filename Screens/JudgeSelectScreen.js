@@ -8,10 +8,13 @@ import {
   Header,
   Text,
   Content,
-  H2,
+  H1,
   Icon,
   Left,
-  Separator
+  Separator,
+  Body,
+  Title,
+  Right
 } from 'native-base';
 
 import styles from './JudgeSelectScreenStyles';
@@ -20,7 +23,7 @@ import JudgeSelectCard from '../Components/JudgeSelectCard';
 
 class JudgeSelectScreen extends React.Component {
   static navigationOptions = {
-    title: 'Select Judges',
+    title: 'Select Judge',
     header: null,
     tabBarIcon: ({ tintColor }) => (
       <Icon name="ios-videocam-outline" style={{ color: tintColor }} />
@@ -65,12 +68,15 @@ class JudgeSelectScreen extends React.Component {
         <Header style={styles.header}>
           <Left>
             <Button transparent onPress={() => goBack()}>
-              <Icon style={styles.backButton} name="arrow-back" />
+              <Icon name="arrow-back" style={styles.backButton} />
             </Button>
           </Left>
+          <Body>
+            <Title style={styles.title}>Select Judge</Title>
+          </Body>
+          <Right />
         </Header>
         <Content style={styles.content}>
-          <H2 style={styles.selectJudgeText}>Select Judge</H2>
           <FlatList
             data={this.props.data}
             extraData={this.state}
@@ -81,18 +87,27 @@ class JudgeSelectScreen extends React.Component {
               marginTop: 20
             }}
           />
-          <Separator style={styles.seperator} bordered>
-            <Text style={styles.seperatorText}>OR</Text>
-          </Separator>
+
+          <H1 style={styles.seperatorText}>or</H1>
+
           <Button
             style={styles.nextButton}
             block
             iconRight
             onPress={() => navigate('ConfirmScreen')}
           >
-            <Text> Best Available Judge </Text>
+            <Text> Find Best Available </Text>
             <Icon name="ios-person-add-outline" />
           </Button>
+
+          <Text note style={styles.buttonNote}>
+            {' '}
+            Have us find the best available Judge
+          </Text>
+          <Text style={styles.buttonNote} note>
+            {' '}
+            all our Judges are certified via the USGA
+          </Text>
         </Content>
       </Container>
     );
