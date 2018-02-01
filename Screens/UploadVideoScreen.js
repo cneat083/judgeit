@@ -17,10 +17,10 @@ import styles from './UploadVideoScreenStyles';
 
 class UploadVideoScreen extends Component {
   static navigationOptions = {
-    title: 'Upload Video',
+    title: 'Add Location',
     header: null,
     tabBarIcon: ({ tintColor }) => (
-      <Icon name="ios-videocam-outline" style={{ color: tintColor }} />
+      <Icon name="keypad" style={{ color: tintColor }} />
     )
   };
 

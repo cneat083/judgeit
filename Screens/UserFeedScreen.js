@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, AsyncStorage, FlatList } from 'react-native';
-import { Video } from 'expo';
 import { connect } from 'react-redux';
+import { MapView } from 'expo';
 
 import {
   Container,
@@ -10,7 +10,11 @@ import {
   Text,
   Content,
   Icon,
-  List
+  Title,
+  Body,
+  Item,
+  Label,
+  Input
 } from 'native-base';
 
 import * as firebase from 'firebase';
@@ -94,9 +98,33 @@ class UserFeedScreen extends React.Component {
   render() {
     const userId = 'No user';
     return (
-      <Container>
-        <Header style={styles.header} />
+      <Container style={styles.content}>
+        <Header style={styles.header}>
+          <Body>
+            <Title style={styles.headerText}>Welcome to Trucky</Title>
+            <Text note style={styles.taglineText}>
+              {' '}
+              Drop more loads :){' '}
+            </Text>
+          </Body>
+        </Header>
+        <Item>
+          <Input placeholder="Search for Locations" />
+        </Item>
         <Content style={styles.content}>
+          <MapView
+            style={{
+              height: 200,
+              width: '100%'
+            }}
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421
+            }}
+          />
+
           <FlatList
             removeClippedSubviews={false}
             data={this.props.data}

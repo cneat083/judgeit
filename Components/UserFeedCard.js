@@ -8,7 +8,9 @@ import {
   CardItem,
   Thumbnail,
   Left,
-  Right
+  Right,
+  Button,
+  Icon
 } from 'native-base';
 
 import styles from '../Screens/UserFeedScreenStyles';
@@ -27,27 +29,19 @@ export default class UserFeedCard extends React.Component {
             <Body>
               <Text>{this.props.athleteName}</Text>
               <Text note>{this.props.athleteEvent}</Text>
-              <Text note>{'Level ' + this.props.athleteLevel}</Text>
+              <Text note>{this.props.athleteLevel}</Text>
             </Body>
           </Left>
           <Right>
-            <H3 style={styles.h3}>{this.props.eventScore}</H3>
+            <Button transparent textStyle={{ color: '#87838B' }}>
+              <Icon name="speedometer" style={{ fontSize: 32 }} />
+              <H3 style={{ marginLeft: 8, color: '#87838B' }}>
+                {this.props.eventScore}
+              </H3>
+            </Button>
           </Right>
         </CardItem>
-        <CardItem cardBody>
-          <Video
-            source={{
-              uri: this.props.videoSrc
-            }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            onLoadStart={this.props.onLoadStart}
-            resizeMode="cover"
-            useNativeControls
-            style={{ width: null, height: 300, flex: 1 }}
-          />
-        </CardItem>
+        <CardItem cardBody />
       </Card>
     );
   }

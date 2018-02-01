@@ -1,12 +1,12 @@
 const styles = {
   content: {
-    backgroundColor: '#e0e1e0'
+    backgroundColor: 'white'
   },
   header: {
-    backgroundColor: '#5c6bc0'
+    backgroundColor: '#5c6bc0',
+    height: 80
   },
   headerText: {
-    marginTop: 15,
     color: 'white',
     fontWeight: 'bold'
   },
@@ -21,7 +21,17 @@ const styles = {
     color: '#3AAFA9'
   },
   button: {
-    marginTop: 20
+    marginTop: 120
+  },
+  searchBar: {
+    backgroundColor: 'white'
+  },
+  map: {
+    marginTop: 10
+  },
+  taglineText: {
+    color: '#ffffff',
+    marginTop: 5
   }
 };
 
